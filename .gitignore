@@ -1,3 +1,4 @@
 node_modules/
 configure.sh
 /uploads/*
+.DS_Store
