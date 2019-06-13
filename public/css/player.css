@@ -10,11 +10,12 @@ html, body{
   height: 100%;
   filter: blur(8px);
   -webkit-filter: blur(8px);
-  display: flex;
-  align-content: center;
 }
 
-iframe {
+.container iframe{
+  position: absolute;
   width: 50%;
   margin: auto;
+  transform: translate(50%, -150%);
+  z-index: 2;
 }

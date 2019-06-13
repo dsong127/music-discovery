@@ -15,11 +15,11 @@ var image_label;
 var client_id = process.env.SPOTIFY_CLIENT_ID;
 var client_secret = process.env.SPOTIFY_CLIENT_SECRET;
 
-/**********
+/**********************************
  *
  *   SPOTIFY AUTHORIZATION
  *
- **********/
+ ********************************/
 
 var spotifyApi = new SpotifyWebApi({
   clientId: client_id,
@@ -36,6 +36,11 @@ spotifyApi.clientCredentialsGrant().then(
   }
 );
 
+/*********************************
+ *
+ *   Uploading files
+ *
+ *********************************/
 
 const multer_storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -60,11 +65,11 @@ const upload = multer({
     storage: multer_storage
 });
 
-/**************
+/******************************
  *
  *   ROUTES
  *
- *************/
+ ******************************/
 
 app.get('/', function(req, res) {
   return res.render('index');
