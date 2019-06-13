@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.0/css/bootstrap.min.css" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/index.css"/>
+    <link href="dropzone/dropzone.css" rel="stylesheet">
+    <title>Music Discovery</title>
+  </head>
+
+  <header>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark">
+      <a class="navbar-brand" href="/">Music Discovery</a>
+
+      <div class="container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <body>
+    <div class="intro">
+      <form method="post" action="/uploads" enctype="multipart/form-data" class="dropzone" id="dropzone-id">
+        <div class="fallback">
+          <input name="file" type="file"/>
+        </div>
+      </form>
+    </div>
+
+    <script src="dropzone/dropzone.js"></script>
+    <script type="text/javascript">
+      Dropzone.options.dropzoneId = {
+        maxFilesize: 2, // MB
+        maxFiles: 1,
+        dictDefaultMessage: 'Drag an image here to upload, or click to select one',
+      }
+    </script>
+    <script>
+      $('form input').change(function() {
+        $(this).closest('form').submit();
+      });
+    </script>
+
+  </body>
+</html>

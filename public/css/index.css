@@ -1,0 +1,22 @@
+.intro {
+  background: url("../img/background.jpg")no-repeat center center;
+  background-size: cover;
+  height: 100%;
+  display: flex;
+}
+
+html, body{
+  height: 100%;
+  background-color: black;
+}
+
+.navbar {
+  font-family: 'Merriweather', serif;
+  background-color: rgba(0,0,0,0.3);
+}
+
+form {
+  width: 50%;
+  height: 20%;
+  margin: auto;
+}

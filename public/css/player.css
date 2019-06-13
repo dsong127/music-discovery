@@ -1,0 +1,15 @@
+html, body{
+  height: 100%;
+}
+.player {
+  background: url("../img/background.jpg")no-repeat center center;
+  height: 100%;
+  display: flex;
+  align-content: center;
+
+}
+
+iframe {
+  width: 50%;
+  margin: auto;
+}
