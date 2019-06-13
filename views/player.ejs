@@ -7,18 +7,25 @@
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.0/css/bootstrap.min.css" />
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.0/css/bootstrap.min.css" /> -->
+    <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script> -->
     <link rel="stylesheet" type="text/css" href="css/player.css"/>
-
 
     <title>Music Discovery</title>
   </head>
   <body>
-    <div class= "player">
-
-      <iframe src="https://open.spotify.com/embed/track/<%-uri%>" width="300" height="380" allowtransparency="true" allow="encrypted-media"></iframe>
+    <div class='background'></div>
+    <div class= "container">
+      <iframe src="https://open.spotify.com/embed/playlist/<%-uri%>" width="300" height="380" allowtransparency="true" allow="encrypted-media"></iframe>
 
     </div>
   </body>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+        $(".background")
+          .css({'background-image': 'url(<%=image%>)'})
+    });
+</script>
+
 </html>
