@@ -4,6 +4,11 @@ Use images to discover new music on Spotify.
 This will uses Google Vision API to identify a related word to an image, and retrieves a playlist from Spotify using that word.
 
 
+### Demo
+
+![Alt Text](demo.gif)
+
+
 ## Built With
 
 * [Node 10.15.3](https://nodejs.org/en/about/)
