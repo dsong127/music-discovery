@@ -11,7 +11,7 @@ var SpotifyWebApi = require('spotify-web-api-node');
 var multer  = require('multer')
 const path = require('path');
 
-var image_label;
+var dataObj;
 var client_id = process.env.SPOTIFY_CLIENT_ID;
 var client_secret = process.env.SPOTIFY_CLIENT_SECRET;
 
@@ -35,6 +35,29 @@ spotifyApi.clientCredentialsGrant().then(
     console.log('Something went wrong when retrieving an access token', err);
   }
 );
+
+/**********************************
+ *
+ *   GOOGLE VISION
+ *
+ ********************************/
+
+ const vision = require('@google-cloud/vision');
+ const client = new vision.ImageAnnotatorClient();
+
+ async function getEntities(fileName) {
+  // Performs label detection on the local file
+  const [result] = await client.webDetection('uploads/' + fileName);
+  const webDetection = result.webDetection;
+  if (webDetection.webEntities.length) {
+    console.log(`Web entities found: ${webDetection.webEntities.length}`);
+    // For debugging
+    webDetection.webEntities.forEach(webEntity => {
+      console.log(`  Description: ${webEntity.description}`);
+    });
+  }
+  return webDetection.webEntities[0].description;
+}
 
 /*********************************
  *
@@ -72,45 +95,45 @@ const upload = multer({
  ******************************/
 
 app.get('/', function(req, res) {
+  res.status(200);
   return res.render('index');
 });
 
 app.post('/uploads', upload.single('file'), function (req, res, next) {
     res.status(200);
 
-    service.get_tag_data(req.file.filename)
-    .then(function(data) {
-        image_label = data;
-    },
-    function(err) {
-        console.log(err);
-    }).then(function () {
-        return res.redirect('/player');
-    });
+    // Get entity using Gcloud vision API
+    getEntities(req.file.filename)
+      .then(function(entity){
+        // Search playlists using image entity
+        spotifyApi.searchPlaylists(entity, { limit : 5, offset : 1 })
+        .then(function(data) {
+          var obj = {
+            image: data.body.playlists.items[0].images[0].url,
+            id: data.body.playlists.items[0].id
+          };
+          //Global object with playlist id and album cover
+          dataObj = obj;
+        })
+        .then(function(){
+          console.log('this should only get called when we have obj data');
+          res.redirect('/player');
+        })
+        .catch(function(error){
+          console.log('Something went wrong');
+          console.log(error);
+        });
+      })
+      .catch(function(error){
+        console.log('error getting entities');
+        console.log(error);
+      });
 });
 
 app.get('/player', function(req, res) {
-  var playlistURI = '';
-
-  spotifyApi.getPlaylistsForCategory('party', {
-      country: 'US',
-      limit : 1,
-      offset : 0
-    })
-  .then(function(data) {
-    var obj = {
-      image: data.body.playlists.items[0].images[0].url,
-      id: data.body.playlists.items[0].id
-    };
-    return obj;
-  })
-  .then(function(obj) {
-    res.render('player', {uri: obj.id, image: obj.image});
-  })
-  .catch(function(error){
-    console.log('something went wrong');
-    console.log(error);
-  });
+  res.status(200);
+  res.render('player', {uri: dataObj.id, image: dataObj.image});
 });
+
 
 app.listen(process.env.PORT || 8080);

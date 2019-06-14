@@ -46,12 +46,13 @@
         maxFilesize: 2, // MB
         maxFiles: 1,
         dictDefaultMessage: 'Drag an image here to upload, or click to select one',
-      }
-    </script>
-    <script>
-      $('form input').change(function() {
-        $(this).closest('form').submit();
-      });
+        init: function() {
+          this.on("complete", function (file) {
+            console.log('heyyyyooooo');
+            window.location.replace('/player');
+          });
+        }
+      };
     </script>
 
   </body>

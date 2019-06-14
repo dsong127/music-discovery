@@ -1,4 +1,4 @@
 node_modules/
-quickStart.sh
 /uploads/*
 .DS_Store
+google_key
