@@ -13,16 +13,19 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "node app.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dsong127/music-discovery.git"
   },
   "author": "Daniel Song",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/dsong127/music-discovery/issues"
   },
-  "homepage": "https://github.com/dsong127/music-discovery#readme"
+  "homepage": "https://github.com/dsong127/music-discovery#readme",
+  "engines": {
+    "node": "10.15.3"
+  }
 }
