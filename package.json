@@ -13,7 +13,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "node app.js"
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
@@ -24,8 +24,8 @@
   "bugs": {
     "url": "https://github.com/dsong127/music-discovery/issues"
   },
-  "homepage": "https://github.com/dsong127/music-discovery#readme",
   "engines": {
     "node": "10.15.3"
-  }
+  },
+  "homepage": "https://github.com/dsong127/music-discovery#readme"
 }
