@@ -1,0 +1,28 @@
+{
+  "name": "music-discovery",
+  "version": "1.0.0",
+  "description": "Google vision to Spotify playlist",
+  "main": "app.js",
+  "dependencies": {
+    "ejs": "^2.6.1",
+    "express": "^4.17.1",
+    "multer": "^1.4.1",
+    "os": "^0.1.1",
+    "request": "^2.88.0",
+    "spotify-web-api-node": "^4.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dsong127/music-discovery.git"
+  },
+  "author": "Daniel Song",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dsong127/music-discovery/issues"
+  },
+  "homepage": "https://github.com/dsong127/music-discovery#readme"
+}
