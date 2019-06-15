@@ -39,7 +39,7 @@ Then
 
 ## Running (Locally)
 
-In cloned directory, and replace Spotify API keys in quickStart.sh.  
+`cd` into cloned directory, open quickStart.sh, and replace with your Spotify API keys.
 
 *  `./quickStart.sh`
 *  Open `Localhost:8080` in your browser
