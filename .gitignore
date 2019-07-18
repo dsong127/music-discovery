@@ -1,3 +1,6 @@
+# Credential setup on heroku
+gcpSetup.js
+
 node_modules/
 /uploads/*
 .DS_Store
