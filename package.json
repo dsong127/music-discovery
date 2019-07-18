@@ -14,7 +14,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    “preinstall” : “node gcpSetup.js”,
+    "preinstall" : "node gcpSetup.js",
     "start": "node app.js"
   },
   "repository": {
