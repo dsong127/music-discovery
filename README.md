@@ -32,7 +32,6 @@ To run locally you will need to:
 
 *  Get Spotify API keys from [Spotify's dashboard](https://developer.spotify.com/dashboard/login)  
 *  Install Gcloud SDK and set up your project to use Google Vision API
-   *  [Google Cloud Client Library for Node](https://cloud.google.com/vision/docs/quickstart-client-libraries)
    *  [Google Cloud SDK](https://cloud.google.com/sdk/docs/quickstarts)
 
 Then
