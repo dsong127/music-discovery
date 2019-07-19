@@ -54,7 +54,9 @@ spotifyApi.clientCredentialsGrant().then(
   // Performs label detection on the local file
   const [result] = await client.labelDetection('uploads/' + fileName);
   const labels = result.labelAnnotations;
-  labels.forEach(label => console.log(label.description));
+
+  // For debugging
+  //labels.forEach(label => console.log(label.description));
 
   return labels[0].description;
 }
@@ -107,7 +109,6 @@ app.post('/uploads', upload.single('file'), function (req, res, next) {
         // Search playlists using image entity
         spotifyApi.searchPlaylists(entity, { limit : 5, offset : 1 })
         .then(function(data) {
-          console.log(data.body.playlists);
           var obj = {
             image: data.body.playlists.items[0].images[0].url,
             id: data.body.playlists.items[0].id

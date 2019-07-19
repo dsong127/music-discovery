@@ -5,3 +5,4 @@ google_key
 /*.env
 npm-debug.log
 gcloud-credentials.json
+startServer.sh
