@@ -4,5 +4,5 @@ node_modules/
 google_key
 /*.env
 npm-debug.log
-gcloud-credentials.json
+vision_creds.json
 startServer.sh
