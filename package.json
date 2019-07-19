@@ -14,7 +14,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "start": "./startServer.sh"
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
