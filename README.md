@@ -14,11 +14,10 @@ This will uses Google Vision API to identify a related word to an image, and ret
 * [Bootstrap 4.1.0](https://getbootstrap.com/)
 * [EJS](https://ejs.co/)
 * [Node 10.15.3](https://nodejs.org/en/about/)
-* [Express](https://expressjs.com/)
 
 
 ### Requirements
-
+* [Express](https://expressjs.com/)
 * [Multer](https://github.com/expressjs/multer) - Middleware for uploading files
 * [DropzoneJS](https://www.dropzonejs.com/) - For drag and drop file uploads
 * [request](https://github.com/request/request) - For HTTP requests
