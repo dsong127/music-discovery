@@ -30,18 +30,18 @@ This will uses Google Vision API to identify a related word to an image, and ret
 
 To run locally you will need to:  
 
-*  Get your own Apotify API keys from [Spotify's dashboard](https://developer.spotify.com/dashboard/login)  
+*  Get Spotify API keys from [Spotify's dashboard](https://developer.spotify.com/dashboard/login)  
 *  Install Gcloud SDK and set up your project to use Google Vision API
-  *  [Google Cloud Client Library for Node](https://cloud.google.com/vision/docs/quickstart-client-libraries)
-  *  [Google Cloud SDK](https://cloud.google.com/sdk/docs/quickstarts)
+   *  [Google Cloud Client Library for Node](https://cloud.google.com/vision/docs/quickstart-client-libraries)
+   *  [Google Cloud SDK](https://cloud.google.com/sdk/docs/quickstarts)
 
 Then
 
 *  `npm install`
 
-## Running (Locally)
+## Running Locally
 
-`cd` into cloned directory, open quickStart.sh, and replace with your Spotify API keys.
+`cd` into cloned directory, open quickStart.sh, and replace with your Spotify API keys, and path to Google Cloud Vision credential JSON file.
 
 *  `./quickStart.sh`
 *  Open `Localhost:8080` in your browser

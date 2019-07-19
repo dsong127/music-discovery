@@ -1,5 +1,8 @@
 'use strict';
 
+// Load environment variables from the .env file
+const fs = require ('fs');
+
 var express = require('express');
 var app = express();
 
@@ -7,19 +10,21 @@ app.use(express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/uploads'));
 app.set("view engine","ejs");
 
-var SpotifyWebApi = require('spotify-web-api-node');
 var multer  = require('multer')
 const path = require('path');
 
 var dataObj;
+
 var client_id = process.env.SPOTIFY_CLIENT_ID;
 var client_secret = process.env.SPOTIFY_CLIENT_SECRET;
+
 
 /**********************************
  *
  *   SPOTIFY AUTHORIZATION
  *
  ********************************/
+var SpotifyWebApi = require('spotify-web-api-node');
 
 var spotifyApi = new SpotifyWebApi({
   clientId: client_id,
@@ -47,16 +52,11 @@ spotifyApi.clientCredentialsGrant().then(
 
  async function getEntities(fileName) {
   // Performs label detection on the local file
-  const [result] = await client.webDetection('uploads/' + fileName);
-  const webDetection = result.webDetection;
-  if (webDetection.webEntities.length) {
-    console.log(`Web entities found: ${webDetection.webEntities.length}`);
-    // For debugging
-    webDetection.webEntities.forEach(webEntity => {
-      console.log(`  Description: ${webEntity.description}`);
-    });
-  }
-  return webDetection.webEntities[0].description;
+  const [result] = await client.labelDetection('uploads/' + fileName);
+  const labels = result.labelAnnotations;
+  labels.forEach(label => console.log(label.description));
+
+  return labels[0].description;
 }
 
 /*********************************
@@ -101,26 +101,26 @@ app.get('/', function(req, res) {
 
 app.post('/uploads', upload.single('file'), function (req, res, next) {
     res.status(200);
-
     // Get entity using Gcloud vision API
     getEntities(req.file.filename)
       .then(function(entity){
         // Search playlists using image entity
         spotifyApi.searchPlaylists(entity, { limit : 5, offset : 1 })
         .then(function(data) {
+          console.log(data.body.playlists);
           var obj = {
             image: data.body.playlists.items[0].images[0].url,
             id: data.body.playlists.items[0].id
           };
           //Global object with playlist id and album cover
-          dataObj = obj;
+        dataObj = obj;
         })
         .then(function(){
-          console.log('this should only get called when we have obj data');
-          res.redirect('/player');
+            console.log('this should only get called when we have obj data');
+            res.redirect('/player');
         })
         .catch(function(error){
-          console.log('Something went wrong');
+          console.log('Something went wrong. Error:');
           console.log(error);
         });
       })

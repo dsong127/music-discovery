@@ -4,4 +4,7 @@
 export SPOTIFY_CLIENT_ID=''
 export SPOTIFY_CLIENT_SECRET=''
 
-node app.js
+# Path to GCLOUD VISION credential JSON file
+export GOOGLE_APPLICATION_CREDENTIALS=''
+
+nodemon app.js
