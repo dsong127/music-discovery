@@ -46,6 +46,7 @@ spotifyApi.clientCredentialsGrant().then(
  *   GOOGLE VISION
  *
  ********************************/
+ fs.writeFileSync(path.join(__dirname, 'vision_creds.json'), process.env.SERVICE_ACCOUNT_JSON);
 
  const vision = require('@google-cloud/vision');
  const client = new vision.ImageAnnotatorClient();
