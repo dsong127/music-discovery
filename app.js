@@ -2,7 +2,7 @@
 
 // Load environment variables from the .env file
 const fs = require ('fs');
-
+const os = require('os');
 var express = require('express');
 var app = express();
 
@@ -52,7 +52,7 @@ spotifyApi.clientCredentialsGrant().then(
 
  async function getEntities(fileName) {
   // Performs label detection on the local file
-  const [result] = await client.labelDetection('uploads/' + fileName);
+  const [result] = await client.labelDetection(os.tmpdir()+ '/' + fileName);
   const labels = result.labelAnnotations;
 
   // For debugging
@@ -69,7 +69,7 @@ spotifyApi.clientCredentialsGrant().then(
 
 const multer_storage = multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null, 'uploads/')
+      cb(null, os.tmpdir())
     },
     filename: function (req, file, cb) {
       cb(null, file.originalname)
