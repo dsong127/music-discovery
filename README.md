@@ -1,8 +1,7 @@
 # Music Discoveory
 
 Use images to discover new music on Spotify.  
-This will uses Google Vision API to identify a related word to an image, and retrieves a playlist from Spotify using that word.
-
+This will uses Google Vision API to identify a related word to an image, and retrieves a playlist from Spotify using that word.  
 
 ### Demo
 
@@ -48,7 +47,12 @@ Then
 
 ### Deployment
 
-Deployment coming soon
+Deployed to [https://music-discover-app.herokuapp.com](https://music-discover-app.herokuapp.com)
+
+### Limitations
+
+The app currently has no navigation. After uploading an image and getting a playlist, user has to manually navigate to the first page by changing the URL. 
+
 
 ## License
 
