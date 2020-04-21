@@ -110,6 +110,7 @@ app.post('/uploads', upload.single('file'), function (req, res, next) {
         spotifyApi.searchPlaylists(entity, { limit : 5, offset : 1 })
         .then(function(data) {
           var obj = {
+            word: entity,
             image: data.body.playlists.items[0].images[0].url,
             id: data.body.playlists.items[0].id
           };

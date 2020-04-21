@@ -12,10 +12,24 @@ html, body{
   -webkit-filter: blur(8px);
 }
 
-.container iframe{
-  position: absolute;
+.container > iframe{
+  /* position: absolute; */
   width: 50%;
   margin: auto;
   transform: translate(50%, -150%);
   z-index: 2;
+}
+
+#iframe-container {
+  height: 0;
+}
+
+.navbar {
+  font-family: 'Merriweather', serif;
+  background-color: rgba(0,0,0,0.3);
+}
+
+.image-entity-label {
+  font-weight: bold;
+  font-size: 20px;
 }

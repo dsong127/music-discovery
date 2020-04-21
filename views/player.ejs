@@ -4,17 +4,37 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
-
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.0/css/bootstrap.min.css" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
 
     <link rel="stylesheet" type="text/css" href="css/player.css"/>
 
     <title>Music Discovery</title>
   </head>
-  
+
+  <header>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark">
+      <a class="navbar-brand" href="/">Music Discovery</a>
+
+      <div class="container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item image-entity-label">
+              Word: <%-word%>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
   <body>
     <div class='background'></div>
-    <div class= "container">
+    <div class= "container" id="iframe-container">
       <iframe src="https://open.spotify.com/embed/playlist/<%-uri%>" width="300" height="380" allowtransparency="true" allow="encrypted-media"></iframe>
     </div>
   </body>
@@ -24,6 +44,6 @@
       $(".background")
         .css({'background-image': 'url(<%=image%>)'})
       });
-  </script>   
+  </script>
 
 </html>
