@@ -134,7 +134,7 @@ app.post('/uploads', upload.single('file'), function (req, res, next) {
 
 app.get('/player', function(req, res) {
   res.status(200);
-  res.render('player', {uri: dataObj.id, image: dataObj.image});
+  res.render('player', {word: entity, uri: dataObj.id, image: dataObj.image});
 });
 
 app.listen(process.env.PORT || 8080);
