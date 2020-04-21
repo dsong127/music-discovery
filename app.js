@@ -103,19 +103,21 @@ app.get('/', function(req, res) {
 
 app.post('/uploads', upload.single('file'), function (req, res, next) {
     res.status(200);
+    var obj = {
+      word: null,
+      image: null,
+      id: null
+    };
     // Get entity using Gcloud vision API
     getEntities(req.file.filename)
       .then(function(entity){
         // Search playlists using image entity
+        obj.word = entity;
         spotifyApi.searchPlaylists(entity, { limit : 5, offset : 1 })
         .then(function(data) {
-          var obj = {
-            word: entity,
-            image: data.body.playlists.items[0].images[0].url,
-            id: data.body.playlists.items[0].id
-          };
-          //Global object with playlist id and album cover
-        dataObj = obj;
+          obj.image = data.body.playlists.items[0].images[0].url;
+          obj.id = data.body.playlists.items[0].id;
+          dataObj = obj;
         })
         .then(function(){
             console.log('this should only get called when we have obj data');
@@ -134,7 +136,7 @@ app.post('/uploads', upload.single('file'), function (req, res, next) {
 
 app.get('/player', function(req, res) {
   res.status(200);
-  res.render('player', {word: entity, uri: dataObj.id, image: dataObj.image});
+  res.render('player', {word: dataObj.word, uri: dataObj.id, image: dataObj.image});
 });
 
 app.listen(process.env.PORT || 8080);
